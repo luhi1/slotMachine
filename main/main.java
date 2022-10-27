@@ -14,13 +14,38 @@ public class main {
         Scanner uInput = new Scanner(System.in);
 
         String uInputStr = "";
-        do {
-            if (!uInputStr.isEmpty()) {
-                System.out.println("Invalid statement.");
+        slotMachine uSlotMachine = new slotMachine();
+
+        while (uInputStr != "quit") {
+            do {
+
+                if (uInputStr.isEmpty()) {
+                    System.out.print("Welcome to the slot machine! Type \"Roll\" to play: ");
+                } else {
+                    System.out.print("Type \"Roll\" to play again, or quit to leave: ");
+                }
+
+                uInputStr = uInput.nextLine();
+
+                if (uInputStr.contentEquals("quit")) {
+                    break;
+                }
+
+            } while (!uInputStr.contentEquals("Roll"));
+
+            if (uInputStr.contentEquals("quit")) {
+                break;
             }
-            System.out.print("Welcome to the slot machine! Type \"Roll\" to play: ");
-            uInputStr = uInput.nextLine();
-        } while (!uInputStr.contentEquals("Roll"));
+
+            uSlotMachine.roll();
+            if (uSlotMachine.win()) {
+                System.out.println("You win!");
+                break;
+            } else {
+                System.out.println("Try again!");
+            }
+        }
+        uInput.close();
 
     }
 }
