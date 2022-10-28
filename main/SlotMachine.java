@@ -12,7 +12,7 @@ public class SlotMachine {
     public void roll() {
         for (int i = 0; i < 1000; i++) {
             this.clear();
-            for (int j = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
                 slotValues[j] = (int) (Math.random() * 10);
             }
             System.out
